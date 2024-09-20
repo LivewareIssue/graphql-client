@@ -13,6 +13,7 @@
     "@stylexjs/webpack-plugin": "^0.7.5",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
+    "@types/react-router-dom": "^5.3.3",
     "babel-loader": "^9.2.1",
     "babel-plugin-relay": "^18.0.0",
     "file-loader": "^6.2.0",
@@ -27,7 +28,8 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-relay": "^18.0.0"
+    "react-relay": "^18.0.0",
+    "react-router-dom": "^6.26.2"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",

@@ -49,5 +49,8 @@ module.exports = (env, argv) => ({
             },
         ],
     },
-    cache: true
+    cache: true,
+    devServer: {
+        historyApiFallback: true,
+    }
 });

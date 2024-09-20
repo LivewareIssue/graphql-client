@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import React from 'react';
 
-const App = () => {
+const Root = () => {
   const [isHighlighted, _setIsHighlighted] = React.useState(false);
 
   return <div>
@@ -21,4 +21,4 @@ const styles = stylex.create({
   },
 });
 
-export default App;
+export default Root;

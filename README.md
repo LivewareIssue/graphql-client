@@ -28,7 +28,7 @@
 > yarn add -D @babel/preset-react
 
 ## React / Typescript support
-> yarn add -D @types/react @types/react-dom @types/react-relay
+> yarn add -D @types/react @types/react-dom @types/react-relay @types/react-router-dom
 
 # Webpack
 > yarn add -D webpack webpack-cli webpack-dev-server
@@ -45,3 +45,6 @@
 
 # StyleX
 > yarn add -D @stylexjs/babel-plugin @stylexjs/webpack-plugin @stylexjs/eslint-plugin
+
+# React router
+> yarn add react-router-dom
