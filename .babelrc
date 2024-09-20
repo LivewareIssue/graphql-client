@@ -6,6 +6,17 @@
                 "artifactDirectory": "./__generated__/relay/"
             }
         ],
+        [
+            "@stylexjs/babel-plugin",
+            {
+                "dev": true,
+                "test": false,
+                "unstable_moduleResolution": {
+                    "type": "commonJS",
+                    "rootDir": "."
+                }
+            }
+        ],
         "@babel/plugin-transform-runtime",
         "@babel/plugin-proposal-class-properties"
     ],

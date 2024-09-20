@@ -28,7 +28,7 @@
 > yarn add -D @babel/preset-react
 
 ## React / Typescript support
-> yarn add -D @types/react @types/react-dom
+> yarn add -D @types/react @types/react-dom @types/react-relay
 
 # Webpack
 > yarn add -D webpack webpack-cli webpack-dev-server
@@ -42,3 +42,6 @@
 
 ## Relay / Babel plugin
 > yarn add -D babel-plugin-relay
+
+# StyleX
+> yarn add -D @stylexjs/babel-plugin @stylexjs/webpack-plugin @stylexjs/eslint-plugin

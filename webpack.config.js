@@ -1,7 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const StylexPlugin = require('@stylexjs/webpack-plugin');
 const path = require("path");
 
-module.exports = {
+module.exports = (env, argv) => ({
     entry: "./src/index.tsx",
     mode: "development",
     output: {
@@ -9,6 +10,16 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
     },
     plugins: [
+        new StylexPlugin({
+            filename: 'styles.[contenthash].css',
+            dev: argv.mode === 'development',
+            runtimeInjection: false,
+            classNamePrefix: 'x',
+            unstable_moduleResolution: {
+                type: 'commonJS',
+                rootDir: __dirname,
+            },
+        }),
         new HtmlWebpackPlugin({
             templateContent: `
             <html>
@@ -37,5 +48,6 @@ module.exports = {
                 use: ["file-loader"]
             },
         ],
-    }
-};
+    },
+    cache: true
+});
