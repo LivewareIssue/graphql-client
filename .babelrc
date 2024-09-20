@@ -1,10 +1,7 @@
 {
     "plugins": [
         [
-            "relay",
-            {
-                "artifactDirectory": "./__generated__/relay/"
-            }
+            "relay"
         ],
         [
             "@stylexjs/babel-plugin",
