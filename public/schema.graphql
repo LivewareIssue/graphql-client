@@ -1,5 +1,6 @@
 type Query {
   book: Book!
+  author: Author!
 }
 
 type Book {

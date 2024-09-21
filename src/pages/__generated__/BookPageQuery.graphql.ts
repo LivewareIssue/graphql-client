@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9c494ff97b8bf3af829ee97e49c8e3c8>>
+ * @generated SignedSource<<623df24ccde0a0c51551a4d503aa13c5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,17 +9,18 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type HomePageQuery$variables = Record<PropertyKey, never>;
-export type HomePageQuery$data = {
+export type BookPageQuery$variables = Record<PropertyKey, never>;
+export type BookPageQuery$data = {
   readonly book: {
     readonly author: {
       readonly name: string;
     };
+    readonly title: string;
   };
 };
-export type HomePageQuery = {
-  response: HomePageQuery$data;
-  variables: HomePageQuery$variables;
+export type BookPageQuery = {
+  response: BookPageQuery$data;
+  variables: BookPageQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -32,6 +33,13 @@ var v0 = [
     "name": "book",
     "plural": false,
     "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "title",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -59,7 +67,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "HomePageQuery",
+    "name": "BookPageQuery",
     "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -68,20 +76,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "HomePageQuery",
+    "name": "BookPageQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "9c8bf7d0c6eb629d49bc4ab5bcfc2c2e",
+    "cacheID": "ff001646d5e1bd14b0d3db1eae6580b5",
     "id": null,
     "metadata": {},
-    "name": "HomePageQuery",
+    "name": "BookPageQuery",
     "operationKind": "query",
-    "text": "query HomePageQuery {\n  book {\n    author {\n      name\n    }\n  }\n}\n"
+    "text": "query BookPageQuery {\n  book {\n    title\n    author {\n      name\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "31ca95221a48ca3a9605afdad6125692";
+(node as any).hash = "003dfee63858fda51817b5335d6890f7";
 
 export default node;
