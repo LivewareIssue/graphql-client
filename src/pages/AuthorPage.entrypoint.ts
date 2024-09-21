@@ -1,19 +1,17 @@
-
-import { EntryPoint } from 'react-relay';
 import { default as AuthorPageQuery } from './__generated__/AuthorPageQuery.graphql';
 import AuthorPage from './AuthorPage';
-import JSResource from '../JSResourceReference';
+import { JSResource, SimpleEntryPoint } from '@loop-payments/react-router-relay';
 
-const authorPageEntryPoint: EntryPoint<typeof AuthorPage> = {
-   root: JSResource('AuthorPage', () => import('./AuthorPage').then(module => module.default)),
+const authorPageEntryPoint: SimpleEntryPoint<typeof AuthorPage> = {
+   root: JSResource('AuthorPage', () => import('./AuthorPage')),
    getPreloadProps(_params) {
       return {
-         extraProps: {},
-         entryPoints: {},
          queries: {
-            authorPageQuery: {
+            query: {
                parameters: AuthorPageQuery,
-               variables: {}
+               variables: {
+
+               }
             }
          }
       };

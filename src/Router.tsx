@@ -1,35 +1,35 @@
-import { EntryPointContainer, loadEntryPoint, PreloadedEntryPoint } from 'react-relay';
-import { createBrowserRouter } from 'yarr';
-import { RelayEnvironment } from './RelayEnvironment';
+import {
+  type EntryPointRouteObject,
+  preparePreloadableRoutes,
+} from "@loop-payments/react-router-relay";
+import { useMemo, useRef } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import bookPageEntryPoint from "./pages/BookPage.entrypoint";
-import authorPageEntryPoint from './pages/AuthorPage.entrypoint';
+import authorPageEntryPoint from "./pages/AuthorPage.entrypoint";
+import { useRelayEnvironment } from "react-relay";
 
-const Root = ({ preloaded: { ref } } : { preloaded: {ref: PreloadedEntryPoint<any>} })  => {
-  return <EntryPointContainer entryPointReference={ref} props={[]} />;
-}
-
-const routes = [
+const MY_ROUTES: EntryPointRouteObject[] = [
   {
-    component: () => Root,
-    path: '/book',
-    preload: () => ({
-      ref: loadEntryPoint({ getEnvironment: () => RelayEnvironment}, bookPageEntryPoint, {}),
-    }),
+    path: "/author",
+    entryPoint: authorPageEntryPoint,
   },
-  {
-    component: () => Root,
-    path: '/author',
-    preload: () => ({
-      ref: loadEntryPoint({ getEnvironment: () => RelayEnvironment}, authorPageEntryPoint, {}),
-    }),
-  }
 ];
 
-const Router = createBrowserRouter({
-  routes,
-  awaitComponent: true,
-  awaitPreload: true,
-});
+export default function Router() {
+  const environment = useRelayEnvironment();
+  // Potentially unnecessary if you never change your environment
+  const environmentRef = useRef(environment);
+  environmentRef.current = environment;
 
-export default Router;
+  const router = useMemo(() => {
+    const routes = preparePreloadableRoutes(MY_ROUTES, {
+      getEnvironment() {
+        return environmentRef.current;
+      },
+    });
+
+    return createBrowserRouter(routes);
+  }, []);
+
+  return <RouterProvider router={router} />;
+}
