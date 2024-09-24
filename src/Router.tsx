@@ -5,19 +5,18 @@ import {
 import { useMemo, useRef } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import authorPageEntryPoint from "./pages/AuthorPage.entrypoint";
+import homePageEntryPoint from "./pages/HomePage.entrypoint";
 import { useRelayEnvironment } from "react-relay";
 
 const MY_ROUTES: EntryPointRouteObject[] = [
   {
-    path: "/author",
-    entryPoint: authorPageEntryPoint,
+    path: "/",
+    entryPoint: homePageEntryPoint,
   },
 ];
 
 export default function Router() {
   const environment = useRelayEnvironment();
-  // Potentially unnecessary if you never change your environment
   const environmentRef = useRef(environment);
   environmentRef.current = environment;
 

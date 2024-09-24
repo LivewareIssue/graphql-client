@@ -1,27 +1,28 @@
 import * as stylex from '@stylexjs/stylex';
 import React from 'react';
 import { graphql, usePreloadedQuery } from 'react-relay';
-import { AuthorPageQuery } from './__generated__/AuthorPageQuery.graphql';
+import { HomePageQuery } from './__generated__/HomePageQuery.graphql';
 import { SimpleEntryPointProps } from '@loop-payments/react-router-relay';
 
 type Props = SimpleEntryPointProps<{
-  query: AuthorPageQuery,
+  query: HomePageQuery,
 }>;
 
-const AuthorPage = ({ queries: {query} }: Props) => {
+const HomePage = ({ queries: {query} }: Props) => {
   const [isHighlighted, setIsHighlighted] = React.useState(false);
 
   const data = usePreloadedQuery(graphql`
-    query AuthorPageQuery {
-      author {
-        name
+    query HomePageQuery {
+      viewer {
+        id
+        userName
       }
     }
   `, query);
 
   return <div>
     <button onClick={() => setIsHighlighted(!isHighlighted)} >Toggle Highlight</button>
-    <h1 {...stylex.props(styles.base, isHighlighted && styles.highlighted)} >{JSON.stringify(data.author)}</h1>
+    <h1 {...stylex.props(styles.base, isHighlighted && styles.highlighted)} >{JSON.stringify(data.viewer?.userName)}</h1>
     
   </div>;
 }
@@ -37,4 +38,4 @@ const styles = stylex.create({
   },
 });
 
-export default AuthorPage;
+export default HomePage;

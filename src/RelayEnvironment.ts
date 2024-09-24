@@ -7,13 +7,25 @@ import {
   Store,
   Observable
 } from 'relay-runtime';
-import { createClient } from 'graphql-http';
+import { ClientOptions, createClient } from 'graphql-http';
 
-const client = createClient({
+const options: ClientOptions = {
   url: 'http://localhost:5294/graphql',
-});
+};
+
+var token = localStorage.getItem('token');
+
+if (token) {
+  options.headers = {
+    Authorization: `Bearer ${token}`,
+  };
+}
+
+const client = createClient(options);
 
 function fetch(operation: RequestParameters, variables: Variables) {
+  var token = localStorage.getItem('token');
+
   return Observable.create((sink) => {
     if (!operation.text) {
       return sink.error(new Error('Operation text cannot be empty'));
