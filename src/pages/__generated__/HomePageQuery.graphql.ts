@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a6e1adcf477c863c89ecdfa07c579659>>
+ * @generated SignedSource<<4797664992cbb98bbc4ab18b574a0d6c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { ConcreteRequest } from 'relay-runtime';
 export type HomePageQuery$variables = Record<PropertyKey, never>;
 export type HomePageQuery$data = {
   readonly viewer: {
+    readonly __typename: "User";
     readonly id: string;
     readonly userName: string | null | undefined;
   } | null | undefined;
@@ -36,6 +37,13 @@ var v0 = [
         "args": null,
         "kind": "ScalarField",
         "name": "id",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "__typename",
         "storageKey": null
       },
       {
@@ -67,16 +75,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "2ca4483048e55530e1764f610b9f99e5",
+    "cacheID": "7be3d995bd47c9431c14c2d2846a1739",
     "id": null,
     "metadata": {},
     "name": "HomePageQuery",
     "operationKind": "query",
-    "text": "query HomePageQuery {\n  viewer {\n    id\n    userName\n  }\n}\n"
+    "text": "query HomePageQuery {\n  viewer {\n    id\n    __typename\n    userName\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9de27a6ac601b386a8a6b1dd5291e825";
+(node as any).hash = "bee1f3cefa80e2d678ee050f6e429b3d";
 
 export default node;

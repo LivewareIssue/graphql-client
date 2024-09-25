@@ -9,23 +9,19 @@ import {
 } from 'relay-runtime';
 import { ClientOptions, createClient } from 'graphql-http';
 
-const options: ClientOptions = {
+const client = createClient({
   url: 'http://localhost:5294/graphql',
-};
-
-var token = localStorage.getItem('token');
-
-if (token) {
-  options.headers = {
-    Authorization: `Bearer ${token}`,
-  };
-}
-
-const client = createClient(options);
+  headers: async () => {
+    const token = localStorage.getItem('token');
+    if (token != null) {
+      return {
+        Authorization: `Bearer ${token}`,
+      };
+    }
+  },
+});
 
 function fetch(operation: RequestParameters, variables: Variables) {
-  var token = localStorage.getItem('token');
-
   return Observable.create((sink) => {
     if (!operation.text) {
       return sink.error(new Error('Operation text cannot be empty'));

@@ -57,14 +57,9 @@ type Query {
   ): [Node]!
 
   """
-  Find a user by their ID.
+  Lookup a user by their ID.
   """
-  user(
-    """
-    The user's ID.
-    """
-    id: ID!
-  ): User!
+  user(id: ID!): User!
 
   """
   The currently authenticated user.
@@ -91,14 +86,10 @@ type Mutation {
 
 type SignInResult {
   """
-  The user that was signed in.
-  """
-  viewer: User!
-
-  """
   An authentication token.
   """
   token: String!
+  query: Query!
 }
 
 type User implements Node {
