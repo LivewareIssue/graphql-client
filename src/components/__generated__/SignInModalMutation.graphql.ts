@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2b178b9cf570845afd028ff4864f55d7>>
+ * @generated SignedSource<<94534e7444ad73863456a7f60dc51f9a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,6 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-import { FragmentRefs } from "relay-runtime";
 export type SignInModalMutation$variables = {
   email: string;
   password: string;
@@ -18,7 +17,8 @@ export type SignInModalMutation$data = {
   readonly signIn: {
     readonly query: {
       readonly viewer: {
-        readonly " $fragmentSpreads": FragmentRefs<"ProfilePicture_viewer">;
+        readonly __typename: "User";
+        readonly id: string;
       } | null | undefined;
     };
     readonly token: string;
@@ -44,70 +44,78 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "Variable",
-    "name": "email",
-    "variableName": "email"
-  },
-  {
-    "kind": "Variable",
-    "name": "password",
-    "variableName": "password"
+    "alias": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "email",
+        "variableName": "email"
+      },
+      {
+        "kind": "Variable",
+        "name": "password",
+        "variableName": "password"
+      }
+    ],
+    "concreteType": "SignInResult",
+    "kind": "LinkedField",
+    "name": "signIn",
+    "plural": false,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "Query",
+        "kind": "LinkedField",
+        "name": "query",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "User",
+            "kind": "LinkedField",
+            "name": "viewer",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "id",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "__typename",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "token",
+        "storageKey": null
+      }
+    ],
+    "storageKey": null
   }
-],
-v2 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "token",
-  "storageKey": null
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "SignInModalMutation",
-    "selections": [
-      {
-        "alias": null,
-        "args": (v1/*: any*/),
-        "concreteType": "SignInResult",
-        "kind": "LinkedField",
-        "name": "signIn",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Query",
-            "kind": "LinkedField",
-            "name": "query",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "User",
-                "kind": "LinkedField",
-                "name": "viewer",
-                "plural": false,
-                "selections": [
-                  {
-                    "args": null,
-                    "kind": "FragmentSpread",
-                    "name": "ProfilePicture_viewer"
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          (v2/*: any*/)
-        ],
-        "storageKey": null
-      }
-    ],
+    "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
@@ -116,68 +124,19 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "SignInModalMutation",
-    "selections": [
-      {
-        "alias": null,
-        "args": (v1/*: any*/),
-        "concreteType": "SignInResult",
-        "kind": "LinkedField",
-        "name": "signIn",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Query",
-            "kind": "LinkedField",
-            "name": "query",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "User",
-                "kind": "LinkedField",
-                "name": "viewer",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "userName",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          (v2/*: any*/)
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "9f1bdf2871f176adcb3307f6ea8d6c02",
+    "cacheID": "b97bddd2ce124ca1caec1183da0b4b15",
     "id": null,
     "metadata": {},
     "name": "SignInModalMutation",
     "operationKind": "mutation",
-    "text": "mutation SignInModalMutation(\n  $email: String!\n  $password: String!\n) {\n  signIn(email: $email, password: $password) {\n    query {\n      viewer {\n        ...ProfilePicture_viewer\n        id\n      }\n    }\n    token\n  }\n}\n\nfragment ProfilePicture_viewer on User {\n  userName\n}\n"
+    "text": "mutation SignInModalMutation(\n  $email: String!\n  $password: String!\n) {\n  signIn(email: $email, password: $password) {\n    query {\n      viewer {\n        id\n        __typename\n      }\n    }\n    token\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "8495bcf20b8d80589a04c66ab85867a4";
+(node as any).hash = "fa630b7fdd75519c650405a6aaa73eb2";
 
 export default node;

@@ -1,18 +1,23 @@
-import ReactModal from "react-modal";
+import * as stylex from '@stylexjs/stylex';
 import { graphql, useMutation } from "react-relay";
 import { SignInModalMutation } from './__generated__/SignInModalMutation.graphql';
 import { useState } from "react";
+import * as Dialog from '@radix-ui/react-dialog';
 
-type Props = {isOpen: boolean};
 
-const SignInModal = ({isOpen}: Props) => {
+export type Props = {
+  isOpen: boolean;
+};
+
+const SignInModal = ({isOpen} : Props) => {
   const [commitMutation, inFlight] = useMutation<SignInModalMutation>(
     graphql`
       mutation SignInModalMutation($email: String!, $password: String!) {
         signIn(email: $email, password: $password) {
           query {
             viewer {
-              ...ProfilePicture_viewer
+              id
+              __typename
             }
           }
           token
@@ -24,7 +29,7 @@ const SignInModal = ({isOpen}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function onSubmit(): void {
+  function signIn(): void {
     commitMutation({
     variables: {
       email: email,
@@ -42,15 +47,120 @@ const SignInModal = ({isOpen}: Props) => {
     }
   })}
 
-  return <ReactModal isOpen={isOpen} style={{content:{left: '20%', right: '20%', bottom: 'auto', top: '20%', border: 'none', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px'}}}>
-    <form onSubmit={onSubmit}>
-      <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', rowGap: '10px'}}>
-        <input style={{width: '50%', padding: '5px', borderRadius: '3px', border: '2px solid #ddd'}} type="text" placeholder="Email" onSubmit={onSubmit} onChange={e => setEmail(e.target.value)}/>
-        <input style={{fontFamily: '"Kumbh Sans", sans-serif', width: '50%', padding: '5px', borderRadius: '3px', border: '2px solid #ddd'}} type="password" placeholder="Password" onSubmit={onSubmit} onChange={e => setPassword(e.target.value)}/>
-        <button style={{border: 'none', borderRadius: '8px', backgroundColor: '#f8b47c', color: 'white', fontFamily: '"Kumbh Sans", sans-serif', fontWeight: 500, width: '50%', height: '40px'}} tabIndex={1} disabled={inFlight} onClick={onSubmit} >Sign In</button>
-      </div>
-    </form>
-  </ReactModal>;
+  return <Dialog.Root open={isOpen}>
+    <Dialog.Portal>
+    <Dialog.Overlay/>
+    <Dialog.Content {...stylex.props(styles.dialogContent)}>
+      <form onSubmit={e => {
+        e.preventDefault();
+        signIn();
+      }}>
+        <Dialog.Title {...stylex.props(styles.dialogTitle)}>Sign In</Dialog.Title>
+        <Dialog.Description {...stylex.props(styles.dialogDescription)}>
+          Sign in to your account to continue
+        </Dialog.Description>
+        <fieldset {...stylex.props(styles.fieldset)}>
+          <label {...stylex.props(styles.label)} htmlFor="email">
+            Email
+          </label>
+          <input {...stylex.props(styles.input)} id="email" type='email' placeholder='user@example.com' onChange={e => setEmail(e.target.value)}/>
+        </fieldset>
+        <fieldset {...stylex.props(styles.fieldset)}>
+          <label {...stylex.props(styles.label)} htmlFor="password">
+            Password
+          </label>
+          <input {...stylex.props(styles.input)} id="password" type='password' onChange={e => setPassword(e.target.value)}/>
+        </fieldset>
+        <Dialog.Close asChild>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'right'}}>
+            <button disabled={inFlight} {...stylex.props(styles.button, styles.accentButton)}>Continue</button>
+          </div>
+        </Dialog.Close>
+      </form>
+    </Dialog.Content>
+  </Dialog.Portal>
+</Dialog.Root>
 }
+
+const styles = stylex.create({
+  dialogContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    borderWidth: 'thin',
+    borderColor: '#d1d1d1',
+    borderStyle: 'solid',
+    borderRadius: '6px',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    ":focus": {
+      outline: 'none'
+    },
+    userSelect: 'none',
+    padding: '20px',
+  },
+  dialogTitle: {
+    margin: 0,
+    fontWeight: 700,
+    fontSize: '20px',
+    textAlign: 'center',
+  },
+  dialogDescription: {
+    margin: '10px 0 20px',
+    fontSize: '16px',
+    lineHeight: '1.5',
+    textAlign: 'center',
+  },
+  button: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '4px',
+    padding: '12px 12px',
+    fontSize: '14px',
+    lineHeight: 1,
+    fontWeight: 500,
+  },
+  accentButton: {
+    backgroundColor: '#1b75e3',
+    color: 'white',
+    fontWeight: 700,
+    ":hover": {
+      backgroundColor: '#1869cc'
+    }
+  },
+  fieldset: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
+    alignItems: 'left',
+    marginBottom: '15px',
+  },
+  input: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: '1px',
+    borderColor: '#dadde0',
+    borderStyle: 'solid',
+    borderRadius: '3px',
+    padding: '10px 10px',
+    fontSize: '14px',
+    fontWeight: 500,
+    lineHeight: 1,
+    color: '#65676b',
+    ":focus": {
+      boxShadow: 'inset 0 0 0 3px #BAD5F7',
+      borderColor: '#1B74E4',
+    }
+  },
+  label: {
+    fontSize: '14px',
+    color: 'black',
+    fontWeight: 700,
+  }
+});
 
 export default SignInModal;
