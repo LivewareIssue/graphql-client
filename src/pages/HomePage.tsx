@@ -4,6 +4,7 @@ import { commitLocalUpdate, graphql, usePreloadedQuery, useRelayEnvironment } fr
 import { HomePageQuery } from './__generated__/HomePageQuery.graphql';
 import { SimpleEntryPointProps } from '@loop-payments/react-router-relay';
 import SignInModal from '../components/SignInModal';
+import ProfilePicture from '../components/ProfilePicture';
 
 type Props = SimpleEntryPointProps<{
   query: HomePageQuery,
@@ -15,61 +16,49 @@ const HomePage = ({ queries: {query} }: Props) => {
   const data = usePreloadedQuery(graphql`
     query HomePageQuery {
       viewer {
-        id
-        __typename
-        userName
+        ...ProfilePicture_viewer
       }
     }
   `, query);
 
-  var env = useRelayEnvironment();
+  const viewer = data.viewer;
 
-  const signOut = () => {
-    localStorage.removeItem('token');
-    commitLocalUpdate(env, (store) => {
-      store.getRoot().setValue(null, 'viewer');
-    });
+  if (viewer == null) {
+    return <div style={{backgroundColor: '#d9d9d9', height: '100%'}}>
+      <SignInModal isOpen={true} />
+    </div>;
   }
 
   return <div>
-    <SignInModal isOpen={data.viewer == null} />
-    <button onClick={() => {
-      signOut();
-    }} >Sign Out</button>
-    <h1 {...stylex.props(styles.base, isHighlighted && styles.highlighted)} >{JSON.stringify(data.viewer?.userName)}</h1>
+    <div {...stylex.props(styles.container)}>
+      <div {...stylex.props(styles.sidebar)}>
+        <div style={{margin: '6'}}>
+          <ProfilePicture viewer={data.viewer!} />
+        </div>
+      </div>
+      <div {...stylex.props(styles.content)}></div>
+    </div>
   </div>;
 }
 
 const styles = stylex.create({
-  base: {
-    fontSize: 16,
-    lineHeight: 1.5,
-    color: 'rgb(60,60,60)',
-  },
-  highlighted: {
-    color: 'rebeccapurple',
-  },
   container: {
     display: 'flex',
-    height: '100vh',
+    flexDirection: 'row',
+    margin: 0,
+    height: '100%'
   },
   sidebar: {
+    backgroundColor: 'white',
     width: '200px',
-    backgroundColor: '#2c3e50',
-    color: 'white',
-    padding: '20px',
-  },
-  list: {
-    listStyleType: 'none',
-    padding: 0,
-  },
-  listItem: {
-    margin: '20px 0',
+    height: '100%',
+    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px',
+    zIndex: 1
   },
   content: {
-    flex: 1,
-    padding: '20px',
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#FAF9F6',
+    flexGrow: 1,
+    height: '100%'
   }
 });
 

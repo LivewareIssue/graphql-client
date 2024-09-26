@@ -23,9 +23,14 @@ module.exports = (env, argv) => ({
         new HtmlWebpackPlugin({
             templateContent: `
             <html>
-              <body>
-                <div id="root"></div>
-              </body>
+                <head>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+                </head>
+                <body style="margin: 0;">
+                    <div id="root"></div>
+                </body>
             </html>
           `
         }
@@ -46,6 +51,13 @@ module.exports = (env, argv) => ({
                 test: /\.(png|svg|jpg|gif)$/,
                 exclude: /node_modules/,
                 use: ["file-loader"]
+            },
+            {
+                test: /\.css$/i,
+                loader: "css-loader",
+                options: {
+                  url: true,
+                },
             },
         ],
     },
