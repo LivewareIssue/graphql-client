@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<06a11230540ecdbd3fa9b877447f5a58>>
+ * @generated SignedSource<<14b2d057692aca2cb84ee82ac827942a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,13 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type HomePageQuery$variables = Record<PropertyKey, never>;
-export type HomePageQuery$data = {
+export type TestsPageQuery$variables = Record<PropertyKey, never>;
+export type TestsPageQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
 };
-export type HomePageQuery = {
-  response: HomePageQuery$data;
-  variables: HomePageQuery$variables;
+export type TestsPageQuery = {
+  response: TestsPageQuery$data;
+  variables: TestsPageQuery$variables;
 };
 
 const node: ConcreteRequest = {
@@ -24,7 +24,7 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "HomePageQuery",
+    "name": "TestsPageQuery",
     "selections": [
       {
         "args": null,
@@ -39,7 +39,7 @@ const node: ConcreteRequest = {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "HomePageQuery",
+    "name": "TestsPageQuery",
     "selections": [
       {
         "alias": null,
@@ -69,15 +69,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "15f91f73b9197b26ad8ba19af09c77ba",
+    "cacheID": "81751006f5de3422b15076e976a60627",
     "id": null,
     "metadata": {},
-    "name": "HomePageQuery",
+    "name": "TestsPageQuery",
     "operationKind": "query",
-    "text": "query HomePageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
+    "text": "query TestsPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
   }
 };
 
-(node as any).hash = "21ce894144815a00ba022d629859eef9";
+(node as any).hash = "8aed3548a6f828bb01a45b466fee8de9";
 
 export default node;

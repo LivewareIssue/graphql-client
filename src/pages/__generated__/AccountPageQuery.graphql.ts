@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<06a11230540ecdbd3fa9b877447f5a58>>
+ * @generated SignedSource<<61193beed37998232c71f8c94b24d06e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,13 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type HomePageQuery$variables = Record<PropertyKey, never>;
-export type HomePageQuery$data = {
+export type AccountPageQuery$variables = Record<PropertyKey, never>;
+export type AccountPageQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
 };
-export type HomePageQuery = {
-  response: HomePageQuery$data;
-  variables: HomePageQuery$variables;
+export type AccountPageQuery = {
+  response: AccountPageQuery$data;
+  variables: AccountPageQuery$variables;
 };
 
 const node: ConcreteRequest = {
@@ -24,7 +24,7 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "HomePageQuery",
+    "name": "AccountPageQuery",
     "selections": [
       {
         "args": null,
@@ -39,7 +39,7 @@ const node: ConcreteRequest = {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "HomePageQuery",
+    "name": "AccountPageQuery",
     "selections": [
       {
         "alias": null,
@@ -69,15 +69,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "15f91f73b9197b26ad8ba19af09c77ba",
+    "cacheID": "50cf2c33f7808d77706c633f6e3c9347",
     "id": null,
     "metadata": {},
-    "name": "HomePageQuery",
+    "name": "AccountPageQuery",
     "operationKind": "query",
-    "text": "query HomePageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
+    "text": "query AccountPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
   }
 };
 
-(node as any).hash = "21ce894144815a00ba022d629859eef9";
+(node as any).hash = "32a79717c741f1710493173a9e780b30";
 
 export default node;

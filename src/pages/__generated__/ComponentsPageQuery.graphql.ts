@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<06a11230540ecdbd3fa9b877447f5a58>>
+ * @generated SignedSource<<467977d6df5e6d10924fcc3cc284be0b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,16 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type HomePageQuery$variables = Record<PropertyKey, never>;
-export type HomePageQuery$data = {
+export type ComponentsPageQuery$variables = Record<PropertyKey, never>;
+export type ComponentsPageQuery$data = {
+  readonly viewer: {
+    readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_userName">;
+  } | null | undefined;
   readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
 };
-export type HomePageQuery = {
-  response: HomePageQuery$data;
-  variables: HomePageQuery$variables;
+export type ComponentsPageQuery = {
+  response: ComponentsPageQuery$data;
+  variables: ComponentsPageQuery$variables;
 };
 
 const node: ConcreteRequest = {
@@ -24,12 +27,28 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "HomePageQuery",
+    "name": "ComponentsPageQuery",
     "selections": [
       {
         "args": null,
         "kind": "FragmentSpread",
         "name": "SideNav_viewer"
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "viewer",
+        "plural": false,
+        "selections": [
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "SideNavFooter_userName"
+          }
+        ],
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -39,7 +58,7 @@ const node: ConcreteRequest = {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "HomePageQuery",
+    "name": "ComponentsPageQuery",
     "selections": [
       {
         "alias": null,
@@ -69,15 +88,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "15f91f73b9197b26ad8ba19af09c77ba",
+    "cacheID": "bfbd5ca7b7c680f758a719bf737d51aa",
     "id": null,
     "metadata": {},
-    "name": "HomePageQuery",
+    "name": "ComponentsPageQuery",
     "operationKind": "query",
-    "text": "query HomePageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
+    "text": "query ComponentsPageQuery {\n  ...SideNav_viewer\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
   }
 };
 
-(node as any).hash = "21ce894144815a00ba022d629859eef9";
+(node as any).hash = "7e59140a653401c9acbdfdf8aa834977";
 
 export default node;

@@ -3,9 +3,13 @@ import { graphql, useMutation } from "react-relay";
 import { SignInModalMutation } from './__generated__/SignInModalMutation.graphql';
 import { useState } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
+import Input from './Input';
+import { colors } from '../colors.stylex';
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';
+import Flexbox from './layout/Flexbox';
 
-
-export type Props = {
+type Props = {
   isOpen: boolean;
 };
 
@@ -29,6 +33,8 @@ const SignInModal = ({isOpen} : Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   function signIn(): void {
     commitMutation({
     variables: {
@@ -44,12 +50,13 @@ const SignInModal = ({isOpen} : Props) => {
       const viewer = query.getLinkedRecord('viewer');
       const root = store.getRoot();
       root.setLinkedRecord(viewer, 'viewer');
+      navigate('/');
     }
   })}
 
   return <Dialog.Root open={isOpen}>
     <Dialog.Portal>
-    <Dialog.Overlay/>
+    <Dialog.Overlay {...stylex.props(styles.overlay)}/>
     <Dialog.Content {...stylex.props(styles.dialogContent)}>
       <form onSubmit={e => {
         e.preventDefault();
@@ -63,18 +70,18 @@ const SignInModal = ({isOpen} : Props) => {
           <label {...stylex.props(styles.label)} htmlFor="email">
             Email
           </label>
-          <input {...stylex.props(styles.input)} id="email" type='email' placeholder='user@example.com' onChange={e => setEmail(e.target.value)}/>
+          <Input type='email' placeholder='user@example.com' onChange={e => setEmail(e.target.value)}/>
         </fieldset>
         <fieldset {...stylex.props(styles.fieldset)}>
           <label {...stylex.props(styles.label)} htmlFor="password">
             Password
           </label>
-          <input {...stylex.props(styles.input)} id="password" type='password' onChange={e => setPassword(e.target.value)}/>
+          <Input type='password' onChange={e => setPassword(e.target.value)}/>
         </fieldset>
         <Dialog.Close asChild>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'right'}}>
-            <button disabled={inFlight} {...stylex.props(styles.button, styles.accentButton)}>Continue</button>
-          </div>
+          <Flexbox style={styles.footer}>
+            <Button disabled={inFlight}>Continue</Button>
+          </Flexbox>
         </Dialog.Close>
       </form>
     </Dialog.Content>
@@ -83,12 +90,21 @@ const SignInModal = ({isOpen} : Props) => {
 }
 
 const styles = stylex.create({
+  overlay: {
+    backgroundColor: colors.background,
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 1,
+  },
   dialogContent: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'white',
+    backgroundColor: colors.background,
     borderWidth: 'thin',
-    borderColor: '#d1d1d1',
+    borderColor: colors.lineColor,
     borderStyle: 'solid',
     borderRadius: '6px',
     position: 'fixed',
@@ -100,6 +116,7 @@ const styles = stylex.create({
     },
     userSelect: 'none',
     padding: '20px',
+    zIndex: 2,
   },
   dialogTitle: {
     margin: 0,
@@ -113,22 +130,12 @@ const styles = stylex.create({
     lineHeight: '1.5',
     textAlign: 'center',
   },
-  button: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '4px',
-    padding: '12px 12px',
-    fontSize: '14px',
-    lineHeight: 1,
-    fontWeight: 500,
-  },
   accentButton: {
-    backgroundColor: '#1b75e3',
+    backgroundColor: colors.accent,
     color: 'white',
     fontWeight: 700,
     ":hover": {
-      backgroundColor: '#1869cc'
+      backgroundColor: colors.accentShade
     }
   },
   fieldset: {
@@ -138,28 +145,14 @@ const styles = stylex.create({
     alignItems: 'left',
     marginBottom: '15px',
   },
-  input: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: '1px',
-    borderColor: '#dadde0',
-    borderStyle: 'solid',
-    borderRadius: '3px',
-    padding: '10px 10px',
-    fontSize: '14px',
-    fontWeight: 500,
-    lineHeight: 1,
-    color: '#65676b',
-    ":focus": {
-      boxShadow: 'inset 0 0 0 3px #BAD5F7',
-      borderColor: '#1B74E4',
-    }
-  },
   label: {
     fontSize: '14px',
-    color: 'black',
+    color: colors.primaryText,
     fontWeight: 700,
+  },
+  footer: {
+    justifyContent:'right',
+    width: '100%',
   }
 });
 

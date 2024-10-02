@@ -1,15 +1,15 @@
 import { graphql, usePreloadedQuery } from 'react-relay';
-import { HomePageQuery } from './__generated__/HomePageQuery.graphql';
+import { TestsPageQuery } from './__generated__/TestsPageQuery.graphql';
 import { SimpleEntryPointProps } from '@loop-payments/react-router-relay';
 import SideNav from '../components/SideNav';
 
 type Props = SimpleEntryPointProps<{
-  query: HomePageQuery,
+  query: TestsPageQuery,
 }>;
 
-const HomePage = ({ queries: {query} }: Props) => {
+const TestsPage = ({ queries: {query} }: Props) => {
   const data = usePreloadedQuery(graphql`
-    query HomePageQuery {
+    query TestsPageQuery {
       ...SideNav_viewer
     }
   `, query);
@@ -17,4 +17,4 @@ const HomePage = ({ queries: {query} }: Props) => {
   return <SideNav fragmentKey={data} />;
 }
 
-export default HomePage;
+export default TestsPage;
