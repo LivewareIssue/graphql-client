@@ -10,15 +10,15 @@ import { ReactComponent as Graph } from '../icons/graph.svg';
 import { ReactComponent as Home } from '../icons/home.svg';
 import { ReactComponent as PuzzlePiece } from '../icons/puzzle-piece.svg';
 import { ReactComponent as UserCircle } from '../icons/user-circle.svg';
+import { ReactComponent as Spinner } from '../icons/spinner.svg';
+import { colors } from "../colors.stylex";
 
 export type IconSize = 'small' | 'medium' | 'large';
 
 type Props = {
   src: React.FunctionComponent<SVGProps<SVGSVGElement>>,
   size?: IconSize,
-  style?: stylex.StyleXStyles<{
-    fill?: string
-  }>
+  style?: stylex.StyleXStyles
 };
 
 const Icon = ({size = 'medium', style, ...props}: Props & {}) => {
@@ -54,5 +54,6 @@ export const GraphIcon: Icon = (props) => <Icon src={Graph} {...props} />;
 export const HomeIcon: Icon = (props) => <Icon src={Home} {...props} />;
 export const PuzzlePieceIcon: Icon = (props) => <Icon src={PuzzlePiece} {...props} />;
 export const UserCircleIcon: Icon = (props) => <Icon src={UserCircle} {...props} />;
+export const SpinnerIcon: Icon = (props) => <Icon src={Spinner} {...props} />;
 
 export default Icon;

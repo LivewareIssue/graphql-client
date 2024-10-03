@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6aeb091e1ea022990e153be2970c0083>>
+ * @generated SignedSource<<cdad72c0c0b13e8b085f940239e1bba0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,6 @@ import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type SideNav_viewer$data = {
   readonly viewer: {
-    readonly id: string;
     readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_userName">;
   } | null | undefined;
   readonly " $fragmentType": "SideNav_viewer";
@@ -37,13 +36,6 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "id",
-          "storageKey": null
-        },
-        {
           "args": null,
           "kind": "FragmentSpread",
           "name": "SideNavFooter_userName"
@@ -56,6 +48,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "c0818d4062cd75d57954792d33adf922";
+(node as any).hash = "c15675a809d5e0c54c6644e3a1f1f618";
 
 export default node;

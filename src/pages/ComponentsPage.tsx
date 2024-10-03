@@ -26,6 +26,7 @@ const ComponentsPage = ({ queries: {query} }: Props) => {
   return <SideNav fragmentKey={data}>
     <Input />
     <Button>Hello</Button>
+    <Button loading={true}>Hello</Button>
     <SideNavHeader title={'Title'}/>
     <SideNavItem icon={HomeIcon} to={'/'} label={'Home'} />
     <SideNavFooter fragmentKey={data.viewer}/>

@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import SideNavItem from './SideNavItem';
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { colors } from '../colors.stylex';
 import { useMatch, useRoutes } from '../Router';
 import { graphql, useFragment } from 'react-relay';
@@ -10,6 +10,7 @@ import SignInModal from './SignInModal';
 import Flexbox from './layout/Flexbox';
 import { layout } from '../layout.stylex';
 import SideNavHeader from './SideNavHeader';
+import { SpinnerIcon } from './Icon';
 
 type Props = {
   children?: React.ReactNode,
@@ -22,7 +23,6 @@ const SideNav = ({children, fragmentKey, style}: Props) => {
     graphql`
       fragment SideNav_viewer on Query {
         viewer {
-          id
           ...SideNavFooter_userName
         } 
       }
@@ -44,11 +44,15 @@ const SideNav = ({children, fragmentKey, style}: Props) => {
         .filter(route => !route.exclude)
         .map((route, i) => <SideNavItem key={i} icon={route.icon} to={route.path!} label={route.label ?? route.title}/>)}
       <Flexbox style={layout.greedy} />
-      <SideNavFooter fragmentKey={data.viewer!}/>
+      <Suspense>
+        <SideNavFooter fragmentKey={data.viewer!}/>
+      </Suspense>
     </Flexbox>
     {
       data.viewer !== null
-        ? <Flexbox style={[styles.content, layout.fullWidth, layout.column, layout.greedy]}>{children}</Flexbox>
+        ? <Suspense>
+            <Flexbox style={[styles.content, layout.fullWidth, layout.column, layout.greedy]}>{children}</Flexbox>
+          </Suspense>
         : <SignInModal isOpen={true} />
     }
   </Flexbox>;

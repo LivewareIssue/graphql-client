@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ead757d2664050a8b11c7955909549a3>>
+ * @generated SignedSource<<ce05c2ce57d084131c9c472a780fc14f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -110,8 +110,8 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
-          (v4/*: any*/)
+          (v4/*: any*/),
+          (v2/*: any*/)
         ],
         "storageKey": null
       },
@@ -135,6 +135,13 @@ return {
                 "kind": "ScalarField",
                 "name": "email",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "roles",
+                "storageKey": null
               }
             ],
             "type": "User",
@@ -146,12 +153,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8d505676d22dec168a05fec1faf64bb0",
+    "cacheID": "12ef59d1a39749909553813473733fa5",
     "id": null,
     "metadata": {},
     "name": "NodePageQuery",
     "operationKind": "query",
-    "text": "query NodePageQuery(\n  $id: ID!\n) {\n  ...SideNav_viewer\n  node(id: $id) {\n    id\n    __typename\n    ...User_fragment\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n\nfragment User_fragment on User {\n  id\n  __typename\n  userName\n  email\n}\n"
+    "text": "query NodePageQuery(\n  $id: ID!\n) {\n  ...SideNav_viewer\n  node(id: $id) {\n    id\n    __typename\n    ...User_fragment\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment User_fragment on User {\n  id\n  __typename\n  userName\n  email\n  roles\n}\n"
   }
 };
 })();

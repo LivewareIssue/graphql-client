@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<467977d6df5e6d10924fcc3cc284be0b>>
+ * @generated SignedSource<<09f5e1fdb2ec51978a59157c73eae03f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -72,14 +72,14 @@ const node: ConcreteRequest = {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "id",
+            "name": "userName",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "userName",
+            "name": "id",
             "storageKey": null
           }
         ],
@@ -88,12 +88,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "bfbd5ca7b7c680f758a719bf737d51aa",
+    "cacheID": "6a039845edc021ac9e0a1318b4bbc865",
     "id": null,
     "metadata": {},
     "name": "ComponentsPageQuery",
     "operationKind": "query",
-    "text": "query ComponentsPageQuery {\n  ...SideNav_viewer\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
+    "text": "query ComponentsPageQuery {\n  ...SideNav_viewer\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
   }
 };
 

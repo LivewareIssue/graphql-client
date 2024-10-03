@@ -80,7 +80,7 @@ const SignInModal = ({isOpen} : Props) => {
         </fieldset>
         <Dialog.Close asChild>
           <Flexbox style={styles.footer}>
-            <Button disabled={inFlight}>Continue</Button>
+            <Button disabled={inFlight} loading={inFlight}>Continue</Button>
           </Flexbox>
         </Dialog.Close>
       </form>

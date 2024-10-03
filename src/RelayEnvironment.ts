@@ -7,7 +7,7 @@ import {
   Store,
   Observable
 } from 'relay-runtime';
-import { ClientOptions, createClient } from 'graphql-http';
+import { createClient } from 'graphql-http';
 
 const client = createClient({
   url: 'http://localhost:5294/graphql',
@@ -18,6 +18,8 @@ const client = createClient({
         Authorization: `Bearer ${token}`,
       };
     }
+
+    return null;
   },
 });
 

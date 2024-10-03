@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<62a3ce10ecbe0e896682794788215cd5>>
+ * @generated SignedSource<<1f35ed66b63c8dcda285f816401c14d6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -53,14 +53,14 @@ const node: ConcreteRequest = {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "id",
+            "name": "userName",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "userName",
+            "name": "id",
             "storageKey": null
           }
         ],
@@ -69,12 +69,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "7d5be761ac4a0f08e31c58e6c069a88f",
+    "cacheID": "876e58fe4e00fb243997183198395e7b",
     "id": null,
     "metadata": {},
     "name": "CodePageQuery",
     "operationKind": "query",
-    "text": "query CodePageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
+    "text": "query CodePageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
   }
 };
 

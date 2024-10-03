@@ -3,6 +3,7 @@ import { NodePageQuery } from './__generated__/NodePageQuery.graphql';
 import { SimpleEntryPointProps } from '@loop-payments/react-router-relay';
 import SideNav from '../components/SideNav';
 import { User } from '../components/node/User';
+import { SpinnerIcon } from '../components/Icon';
 
 type Props = SimpleEntryPointProps<{
   query: NodePageQuery,

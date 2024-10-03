@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c2a4288d281ffa7a60fb9b92a17c88b8>>
+ * @generated SignedSource<<384bd55aeeb425df01cf754f4fba2fc4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -53,14 +53,14 @@ const node: ConcreteRequest = {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "id",
+            "name": "userName",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "userName",
+            "name": "id",
             "storageKey": null
           }
         ],
@@ -69,12 +69,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "a40a54c2739d0f8f5d0a98a3e930eeb3",
+    "cacheID": "2d3c1ae7f7beed799dfad940184c02c0",
     "id": null,
     "metadata": {},
     "name": "DiffsPageQuery",
     "operationKind": "query",
-    "text": "query DiffsPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    id\n    ...SideNavFooter_userName\n  }\n}\n"
+    "text": "query DiffsPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
   }
 };
 
