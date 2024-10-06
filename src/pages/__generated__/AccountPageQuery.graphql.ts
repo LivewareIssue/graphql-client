@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<546bc078b5be53b4765813b2d74c18d5>>
+ * @generated SignedSource<<3dab174efa9baa83a3da389c90fe6de8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -44,7 +44,7 @@ const node: ConcreteRequest = {
       {
         "alias": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "EntUser",
         "kind": "LinkedField",
         "name": "viewer",
         "plural": false,
@@ -69,12 +69,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "f5fe284259aff57ee50ff59fa94714cc",
+    "cacheID": "3379db4fc1dcad5feece4c4156af949c",
     "id": null,
     "metadata": {},
     "name": "AccountPageQuery",
     "operationKind": "query",
-    "text": "query AccountPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
+    "text": "query AccountPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
   }
 };
 

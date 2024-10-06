@@ -9,7 +9,7 @@ type Props = {
 export const User = ({fragmentKey}: Props) => {
   const data = useFragment(
     graphql`
-      fragment User_fragment on User {
+      fragment User_fragment on EntUser {
         id
         __typename
         userName

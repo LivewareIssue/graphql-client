@@ -57,14 +57,24 @@ type Query {
   ): [Node]!
 
   """
+  Lookup a task by it's ID.
+  """
+  entTask(id: ID!): EntTask
+
+  """
   Lookup a user by their ID.
   """
-  user(id: ID!): User!
+  entUser(id: ID!): EntUser
+
+  """
+  List all tasks.
+  """
+  tasks: [EntTask!]!
 
   """
   The currently authenticated user.
   """
-  viewer: User
+  viewer: EntUser
 }
 
 type Mutation {
@@ -84,6 +94,64 @@ type Mutation {
   ): SignInResult!
 }
 
+type EntTask implements Node {
+  """
+  This task's unique identifier.
+  """
+  id: ID!
+
+  """
+  This task's title.
+  """
+  title: String!
+
+  """
+  This task's content.
+  """
+  content: String!
+
+  """
+  The current status of this task.
+  """
+  status: TaskStatus!
+
+  """
+  The approximate size of this task.
+  """
+  size: TaskSize!
+
+  """
+  This task's priority.
+  """
+  priority: TaskPriority!
+
+  """
+  The date and time when this task was created.
+  """
+  createdAt: DateTime!
+
+  """
+  The date and time when this task was last updated.
+  """
+  updatedAt: DateTime!
+  owner: EntUser
+}
+
+enum TaskSize {
+  XS
+  S
+  M
+  L
+  XL
+}
+
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  BLOCKED
+  CLOSED
+}
+
 type SignInResult {
   """
   An authentication token.
@@ -92,24 +160,40 @@ type SignInResult {
   query: Query!
 }
 
-type User implements Node {
+type EntUser implements Node {
   """
-  The user's unique identifier.
+  This roles assigned to this user.
+  """
+  roles: [String!]!
+
+  """
+  This user's unique identifier.
   """
   id: ID!
 
   """
-  The user's non-unique display name.
+  This user's display name.
   """
   userName: String
 
   """
-  The user's current email address.
+  This user's email address.
   """
   email: String
 
   """
-  The roles that the user is a member of.
+  This user's phone number.
   """
-  roles: [String!]!
+  phoneNumber: String
 }
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+"""
+The `DateTime` scalar represents an ISO-8601 compliant date time type.
+"""
+scalar DateTime @specifiedBy(url: "https://www.graphql-scalars.com/date-time")

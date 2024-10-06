@@ -10,7 +10,7 @@ type Props = {
 export const SideNavFooter = ({fragmentKey}: Props) => {
   const data = useFragment(
     graphql`
-      fragment SideNavFooter_userName on User {
+      fragment SideNavFooter_userName on EntUser {
         userName
       }
     `,

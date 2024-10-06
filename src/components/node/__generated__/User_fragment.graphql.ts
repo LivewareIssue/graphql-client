@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6f72df900043e1ad57514bf84d6e1c78>>
+ * @generated SignedSource<<90250f340211233c3d209c72030b6d62>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,7 @@
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type User_fragment$data = {
-  readonly __typename: "User";
+  readonly __typename: "EntUser";
   readonly email: string | null | undefined;
   readonly id: string;
   readonly roles: ReadonlyArray<string>;
@@ -65,10 +65,10 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "User",
+  "type": "EntUser",
   "abstractKey": null
 };
 
-(node as any).hash = "a3399f07096e70d40ee9681cfe01963a";
+(node as any).hash = "f06b269868672bded6c8bd649306fd98";
 
 export default node;

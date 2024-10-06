@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<94534e7444ad73863456a7f60dc51f9a>>
+ * @generated SignedSource<<b359f93680c48bce55d05b8af98ab905>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,7 @@ export type SignInModalMutation$data = {
   readonly signIn: {
     readonly query: {
       readonly viewer: {
-        readonly __typename: "User";
+        readonly __typename: "EntUser";
         readonly id: string;
       } | null | undefined;
     };
@@ -73,7 +73,7 @@ v1 = [
           {
             "alias": null,
             "args": null,
-            "concreteType": "User",
+            "concreteType": "EntUser",
             "kind": "LinkedField",
             "name": "viewer",
             "plural": false,

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<09f5e1fdb2ec51978a59157c73eae03f>>
+ * @generated SignedSource<<049aa4ab82c30e4937291454e46b5129>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -37,7 +37,7 @@ const node: ConcreteRequest = {
       {
         "alias": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "EntUser",
         "kind": "LinkedField",
         "name": "viewer",
         "plural": false,
@@ -63,7 +63,7 @@ const node: ConcreteRequest = {
       {
         "alias": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "EntUser",
         "kind": "LinkedField",
         "name": "viewer",
         "plural": false,
@@ -88,12 +88,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "6a039845edc021ac9e0a1318b4bbc865",
+    "cacheID": "e27e4dcb20e78d6e34bc184465cd1689",
     "id": null,
     "metadata": {},
     "name": "ComponentsPageQuery",
     "operationKind": "query",
-    "text": "query ComponentsPageQuery {\n  ...SideNav_viewer\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
+    "text": "query ComponentsPageQuery {\n  ...SideNav_viewer\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
   }
 };
 

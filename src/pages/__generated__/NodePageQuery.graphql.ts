@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ce05c2ce57d084131c9c472a780fc14f>>
+ * @generated SignedSource<<dde15a0a2ec6aa51338957d0f72fd814>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -105,7 +105,7 @@ return {
       {
         "alias": null,
         "args": null,
-        "concreteType": "User",
+        "concreteType": "EntUser",
         "kind": "LinkedField",
         "name": "viewer",
         "plural": false,
@@ -144,7 +144,7 @@ return {
                 "storageKey": null
               }
             ],
-            "type": "User",
+            "type": "EntUser",
             "abstractKey": null
           }
         ],
@@ -153,12 +153,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "12ef59d1a39749909553813473733fa5",
+    "cacheID": "045e498b1b47235a9ba552c0e48ef4d5",
     "id": null,
     "metadata": {},
     "name": "NodePageQuery",
     "operationKind": "query",
-    "text": "query NodePageQuery(\n  $id: ID!\n) {\n  ...SideNav_viewer\n  node(id: $id) {\n    id\n    __typename\n    ...User_fragment\n  }\n}\n\nfragment SideNavFooter_userName on User {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment User_fragment on User {\n  id\n  __typename\n  userName\n  email\n  roles\n}\n"
+    "text": "query NodePageQuery(\n  $id: ID!\n) {\n  ...SideNav_viewer\n  node(id: $id) {\n    id\n    __typename\n    ...User_fragment\n  }\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment User_fragment on EntUser {\n  id\n  __typename\n  userName\n  email\n  roles\n}\n"
   }
 };
 })();
