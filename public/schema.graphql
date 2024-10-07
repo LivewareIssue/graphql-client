@@ -57,14 +57,9 @@ type Query {
   ): [Node]!
 
   """
-  Lookup a task by it's ID.
+  The currently authenticated user.
   """
-  entTask(id: ID!): EntTask
-
-  """
-  Lookup a user by their ID.
-  """
-  entUser(id: ID!): EntUser
+  viewer: EntUser
 
   """
   List all tasks.
@@ -72,9 +67,14 @@ type Query {
   tasks: [EntTask!]!
 
   """
-  The currently authenticated user.
+  List all users.
   """
-  viewer: EntUser
+  users: [EntUser!]!
+
+  """
+  List all comments.
+  """
+  comments: [EntComment!]!
 }
 
 type Mutation {
@@ -134,7 +134,64 @@ type EntTask implements Node {
   The date and time when this task was last updated.
   """
   updatedAt: DateTime!
+
+  """
+  The unique identifier of the user that this task is currently assigned to.
+  """
+  ownerId: String
+
+  """
+  The user that this task is currently assigned to.
+  """
   owner: EntUser
+
+  """
+  The comments made on this task.
+  """
+  comments: [EntComment!]!
+
+  """
+  The tasks that this task depends on.
+  """
+  dependsOn: [EntTask!]!
+}
+
+type EntComment implements Node {
+  """
+  This comment's unique identifier.
+  """
+  id: ID!
+
+  """
+  This comment's content.
+  """
+  content: String!
+
+  """
+  The date and time when this comment was created.
+  """
+  createdAt: DateTime!
+
+  """
+  The date and time when this comment was last updated.
+  """
+  updatedAt: DateTime!
+
+  """
+  The unique identifier of the user that made this comment.
+  """
+  authorId: String!
+
+  """
+  The user that made this comment.
+  """
+  author: EntUser!
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
 }
 
 enum TaskSize {
@@ -167,6 +224,16 @@ type EntUser implements Node {
   roles: [String!]!
 
   """
+  The tasks assigned to this user.
+  """
+  tasks: [EntTask!]!
+
+  """
+  The comments made by this user.
+  """
+  comments: [EntComment!]!
+
+  """
   This user's unique identifier.
   """
   id: ID!
@@ -185,12 +252,6 @@ type EntUser implements Node {
   This user's phone number.
   """
   phoneNumber: String
-}
-
-enum TaskPriority {
-  LOW
-  MEDIUM
-  HIGH
 }
 
 """
