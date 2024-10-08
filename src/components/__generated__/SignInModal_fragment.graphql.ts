@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<41f5fdc581045f8ad3d88500453e0fb6>>
+ * @generated SignedSource<<67c5d6e478ef26c1634dbe1ceafefb0e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,22 +10,22 @@
 
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type SideNav_viewer$data = {
+export type SignInModal_fragment$data = {
   readonly viewer: {
-    readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_userName">;
+    readonly id: string;
   } | null | undefined;
-  readonly " $fragmentType": "SideNav_viewer";
+  readonly " $fragmentType": "SignInModal_fragment";
 };
-export type SideNav_viewer$key = {
-  readonly " $data"?: SideNav_viewer$data;
-  readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
+export type SignInModal_fragment$key = {
+  readonly " $data"?: SignInModal_fragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"SignInModal_fragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "SideNav_viewer",
+  "name": "SignInModal_fragment",
   "selections": [
     {
       "alias": null,
@@ -36,9 +36,11 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
+          "alias": null,
           "args": null,
-          "kind": "FragmentSpread",
-          "name": "SideNavFooter_userName"
+          "kind": "ScalarField",
+          "name": "id",
+          "storageKey": null
         }
       ],
       "storageKey": null
@@ -48,6 +50,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "c15675a809d5e0c54c6644e3a1f1f618";
+(node as any).hash = "701c85108c3d800c7e6fd3b6c29d1e7a";
 
 export default node;

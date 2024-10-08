@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0edd4f8f6a3436e79dad7062a3095ff3>>
+ * @generated SignedSource<<f94d210ea4c6583e01197ed9e8759103>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,29 +9,45 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-import { FragmentRefs } from "relay-runtime";
 export type HomePageQuery$variables = Record<PropertyKey, never>;
 export type HomePageQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
+  readonly viewer: {
+    readonly id: string;
+  } | null | undefined;
 };
 export type HomePageQuery = {
   response: HomePageQuery$data;
   variables: HomePageQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = [
+  {
+    "alias": null,
+    "args": null,
+    "concreteType": "EntUser",
+    "kind": "LinkedField",
+    "name": "viewer",
+    "plural": false,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "id",
+        "storageKey": null
+      }
+    ],
+    "storageKey": null
+  }
+];
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "HomePageQuery",
-    "selections": [
-      {
-        "args": null,
-        "kind": "FragmentSpread",
-        "name": "SideNav_viewer"
-      }
-    ],
+    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -40,44 +56,19 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "HomePageQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "EntUser",
-        "kind": "LinkedField",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "userName",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "38055ea5b4b340e153ab7a33ee8918f2",
+    "cacheID": "2c2de79b6894c4d505e8cb2b8db3d813",
     "id": null,
     "metadata": {},
     "name": "HomePageQuery",
     "operationKind": "query",
-    "text": "query HomePageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
+    "text": "query HomePageQuery {\n  viewer {\n    id\n  }\n}\n"
   }
 };
+})();
 
-(node as any).hash = "21ce894144815a00ba022d629859eef9";
+(node as any).hash = "4ebfff63b65adf3e8e4a3875dd09016c";
 
 export default node;

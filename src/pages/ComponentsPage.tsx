@@ -1,36 +1,43 @@
-import { graphql, usePreloadedQuery } from 'react-relay';
+import { graphql, PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import { ComponentsPageQuery } from './__generated__/ComponentsPageQuery.graphql';
 import { SimpleEntryPointProps } from '@loop-payments/react-router-relay';
 import SideNav from '../components/SideNav';
-import Input from '../components/Input';
-import SideNavItem from '../components/SideNavItem';
-import { HomeIcon } from '../components/Icon';
-import { SideNavFooter } from '../components/SideNavFooter';
-import Button from '../components/Button';
-import SideNavHeader from '../components/SideNavHeader';
+import { Suspense } from 'react';
+import Flexbox from '../components/layout/Flexbox';
+import { layout } from '../layout.stylex';
+import * as stylex from '@stylexjs/stylex';
+import { SideNavQuery } from '../components/__generated__/SideNavQuery.graphql';
 
 type Props = SimpleEntryPointProps<{
-  query: ComponentsPageQuery,
+  componentsPageQuery: ComponentsPageQuery,
+  sideNavQuery: SideNavQuery
 }>;
 
-const ComponentsPage = ({ queries: {query} }: Props) => {
+const ComponentsPageContent = ({ query }: {query: PreloadedQuery<ComponentsPageQuery>}) => {
   const data = usePreloadedQuery(graphql`
     query ComponentsPageQuery {
-      ...SideNav_viewer
       viewer {
-        ...SideNavFooter_userName
+        id
       }
     }
   `, query);
   
-  return <SideNav fragmentKey={data}>
-    <Input />
-    <Button>Hello</Button>
-    <Button loading={true}>Hello</Button>
-    <SideNavHeader title={'Title'}/>
-    <SideNavItem icon={HomeIcon} to={'/'} label={'Home'} />
-    <SideNavFooter fragmentKey={data.viewer}/>
-  </SideNav>;
+  return <div>ComponentsPage</div>
 }
+
+export const ComponentsPage = ({ queries: {componentsPageQuery, sideNavQuery} }: Props) => {
+  return <Flexbox style={[layout.fullHeight, layout.row]}>
+    <SideNav query={sideNavQuery} style={layout.sideNav} />
+    <Flexbox style={[layout.column, layout.content]}>
+      <Suspense>
+        <ComponentsPageContent query={componentsPageQuery} />
+      </Suspense>
+    </Flexbox>
+  </Flexbox>;
+}
+
+const styles = stylex.create({
+
+});
 
 export default ComponentsPage;

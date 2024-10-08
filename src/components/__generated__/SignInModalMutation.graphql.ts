@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b359f93680c48bce55d05b8af98ab905>>
+ * @generated SignedSource<<1e22dc652cc022f3be57ffd1245a396f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,6 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type SignInModalMutation$variables = {
   email: string;
   password: string;
@@ -16,10 +17,7 @@ export type SignInModalMutation$variables = {
 export type SignInModalMutation$data = {
   readonly signIn: {
     readonly query: {
-      readonly viewer: {
-        readonly __typename: "EntUser";
-        readonly id: string;
-      } | null | undefined;
+      readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_fragment">;
     };
     readonly token: string;
   };
@@ -44,78 +42,59 @@ var v0 = [
 ],
 v1 = [
   {
-    "alias": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "email",
-        "variableName": "email"
-      },
-      {
-        "kind": "Variable",
-        "name": "password",
-        "variableName": "password"
-      }
-    ],
-    "concreteType": "SignInResult",
-    "kind": "LinkedField",
-    "name": "signIn",
-    "plural": false,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "Query",
-        "kind": "LinkedField",
-        "name": "query",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "EntUser",
-            "kind": "LinkedField",
-            "name": "viewer",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "id",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "__typename",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "token",
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
+    "kind": "Variable",
+    "name": "email",
+    "variableName": "email"
+  },
+  {
+    "kind": "Variable",
+    "name": "password",
+    "variableName": "password"
   }
-];
+],
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "token",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "SignInModalMutation",
-    "selections": (v1/*: any*/),
+    "selections": [
+      {
+        "alias": null,
+        "args": (v1/*: any*/),
+        "concreteType": "SignInResult",
+        "kind": "LinkedField",
+        "name": "signIn",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Query",
+            "kind": "LinkedField",
+            "name": "query",
+            "plural": false,
+            "selections": [
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "SideNavFooter_fragment"
+              }
+            ],
+            "storageKey": null
+          },
+          (v2/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "Mutation",
     "abstractKey": null
   },
@@ -124,19 +103,68 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "SignInModalMutation",
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": (v1/*: any*/),
+        "concreteType": "SignInResult",
+        "kind": "LinkedField",
+        "name": "signIn",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Query",
+            "kind": "LinkedField",
+            "name": "query",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "EntUser",
+                "kind": "LinkedField",
+                "name": "viewer",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "userName",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          (v2/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "b97bddd2ce124ca1caec1183da0b4b15",
+    "cacheID": "6df13758fd0b608e417b3d6447b6f1cb",
     "id": null,
     "metadata": {},
     "name": "SignInModalMutation",
     "operationKind": "mutation",
-    "text": "mutation SignInModalMutation(\n  $email: String!\n  $password: String!\n) {\n  signIn(email: $email, password: $password) {\n    query {\n      viewer {\n        id\n        __typename\n      }\n    }\n    token\n  }\n}\n"
+    "text": "mutation SignInModalMutation(\n  $email: String!\n  $password: String!\n) {\n  signIn(email: $email, password: $password) {\n    query {\n      ...SideNavFooter_fragment\n    }\n    token\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fa630b7fdd75519c650405a6aaa73eb2";
+(node as any).hash = "5bceafa7659044236a931547ecda8b58";
 
 export default node;

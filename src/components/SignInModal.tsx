@@ -1,28 +1,35 @@
 import * as stylex from '@stylexjs/stylex';
-import { graphql, useMutation } from "react-relay";
+import { graphql, useFragment, useMutation } from "react-relay";
 import { SignInModalMutation } from './__generated__/SignInModalMutation.graphql';
 import { useState } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
 import Input from './Input';
 import { colors } from '../colors.stylex';
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';
 import Flexbox from './layout/Flexbox';
+import { SignInModal_fragment$key } from './__generated__/SignInModal_fragment.graphql';
 
 type Props = {
-  isOpen: boolean;
+  fragmentKey: SignInModal_fragment$key;
 };
 
-const SignInModal = ({isOpen} : Props) => {
+const SignInModal = ({fragmentKey} : Props) => {
+  const data = useFragment(graphql`
+    fragment SignInModal_fragment on Query {
+      viewer {
+        id
+      }
+    }
+  `, fragmentKey);
+
+  const isOpen = data.viewer == null;
+
   const [commitMutation, inFlight] = useMutation<SignInModalMutation>(
     graphql`
       mutation SignInModalMutation($email: String!, $password: String!) {
         signIn(email: $email, password: $password) {
           query {
-            viewer {
-              id
-              __typename
-            }
+            ...SideNavFooter_fragment
           }
           token
         }
@@ -32,8 +39,6 @@ const SignInModal = ({isOpen} : Props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
 
   function signIn(): void {
     commitMutation({
@@ -50,7 +55,6 @@ const SignInModal = ({isOpen} : Props) => {
       const viewer = query.getLinkedRecord('viewer');
       const root = store.getRoot();
       root.setLinkedRecord(viewer, 'viewer');
-      navigate('/');
     }
   })}
 

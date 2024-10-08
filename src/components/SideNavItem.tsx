@@ -8,11 +8,12 @@ import { layout } from '../layout.stylex';
 
 type Props = {
   to: string,
-  label: string,
-  icon: Icon
+  label?: string,
+  icon: Icon,
+  children?: React.ReactNode,
 };
 
-const SideNavItem = ({to, label, ...props}: Props) => {
+const SideNavItem = ({to, label, children, ...props}: Props) => {
   const { pathname } = useLocation();
 
   const isActive = pathname === to;
@@ -20,6 +21,7 @@ const SideNavItem = ({to, label, ...props}: Props) => {
   return <Link {...stylex.props([styles.base, isActive && styles.active])} to={to}>
     {<props.icon />}
     <Label {...stylex.props([styles.label, layout.unselectable])}>{label}</Label>
+    <div {...stylex.props(styles.label)}>{children}</div>
   </Link>;
 }
 

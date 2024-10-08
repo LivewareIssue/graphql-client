@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<dde15a0a2ec6aa51338957d0f72fd814>>
+ * @generated SignedSource<<a6f48338e298fb4f1bfab1f2a6ad2d48>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,7 +19,7 @@ export type NodePageQuery$data = {
     readonly id: string;
     readonly " $fragmentSpreads": FragmentRefs<"User_fragment">;
   } | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
+  readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_fragment">;
 };
 export type NodePageQuery = {
   response: NodePageQuery$data;
@@ -72,7 +72,7 @@ return {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "SideNav_viewer"
+        "name": "SideNavFooter_fragment"
       },
       {
         "alias": null,
@@ -110,8 +110,8 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
-          (v4/*: any*/),
-          (v2/*: any*/)
+          (v2/*: any*/),
+          (v4/*: any*/)
         ],
         "storageKey": null
       },
@@ -153,16 +153,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "045e498b1b47235a9ba552c0e48ef4d5",
+    "cacheID": "e56a491006d3eba338bc0671670e81d0",
     "id": null,
     "metadata": {},
     "name": "NodePageQuery",
     "operationKind": "query",
-    "text": "query NodePageQuery(\n  $id: ID!\n) {\n  ...SideNav_viewer\n  node(id: $id) {\n    id\n    __typename\n    ...User_fragment\n  }\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n\nfragment User_fragment on EntUser {\n  id\n  __typename\n  userName\n  email\n  roles\n}\n"
+    "text": "query NodePageQuery(\n  $id: ID!\n) {\n  ...SideNavFooter_fragment\n  node(id: $id) {\n    id\n    __typename\n    ...User_fragment\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment User_fragment on EntUser {\n  id\n  __typename\n  userName\n  email\n  roles\n}\n"
   }
 };
 })();
 
-(node as any).hash = "0f4de157a40c89b2ca952fcf13f2f5eb";
+(node as any).hash = "15a4b3ff7f57fc665d8f5d46328f8d07";
 
 export default node;

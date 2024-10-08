@@ -10,6 +10,9 @@ export const layout = stylex.create({
   column: {
     flexDirection: 'column'
   },
+  row: {
+    flexDirection: 'row'
+  },
   greedy: {
     flexGrow: 1
   },
@@ -19,4 +22,13 @@ export const layout = stylex.create({
   unselectable: {
     userSelect: 'none'
   },
+  sideNav: {
+    width: {
+      default: null,
+      '@media (min-aspect-ratio: 4/3)': '200px'
+    },
+  },
+  content: {
+    padding: 20,
+  }
 });

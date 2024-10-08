@@ -3,7 +3,10 @@ import { NodePageQuery } from './__generated__/NodePageQuery.graphql';
 import { SimpleEntryPointProps } from '@loop-payments/react-router-relay';
 import SideNav from '../components/SideNav';
 import { User } from '../components/node/User';
-import { SpinnerIcon } from '../components/Icon';
+import Flexbox from '../components/layout/Flexbox';
+import { layout } from '../layout.stylex';
+import { Suspense } from 'react';
+import SignInModal from '../components/SignInModal';
 
 type Props = SimpleEntryPointProps<{
   query: NodePageQuery,
@@ -12,7 +15,7 @@ type Props = SimpleEntryPointProps<{
 const NodePage = ({ queries: {query} }: Props) => {
   const data = usePreloadedQuery(graphql`
     query NodePageQuery($id: ID!) {
-      ...SideNav_viewer
+      ...SideNavFooter_fragment
       node(id: $id) {
         id
         __typename
@@ -21,9 +24,15 @@ const NodePage = ({ queries: {query} }: Props) => {
     }
   `, query);
 
-  return <SideNav fragmentKey={data}>
-    {data.node?.__typename === 'User' && <User fragmentKey={data.node} />}
-  </SideNav>;
+  return <Flexbox style={[layout.fullHeight, layout.row]}>
+    {/* {<SignInModal isOpen={data.viewer == null}/> */}
+    <Suspense fallback={<div>Loading side-nav...</div>}>
+      <SideNav fragmentKey={data} />
+    </Suspense>
+    <Suspense fallback={<div>Loading node...</div>}>
+      {data.node?.__typename === 'User' && <User fragmentKey={data.node} />}
+    </Suspense>
+  </Flexbox>
 }
 
 export default NodePage;

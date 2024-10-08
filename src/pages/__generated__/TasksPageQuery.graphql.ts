@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8a5318d400f1949088abfe864d84587b>>
+ * @generated SignedSource<<2a19ef02a0677ea3fa94187e2800e780>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,14 +12,25 @@ import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TasksPageQuery$variables = Record<PropertyKey, never>;
 export type TasksPageQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
+  readonly tasks: ReadonlyArray<{
+    readonly " $fragmentSpreads": FragmentRefs<"TaskEditor_fragment">;
+  }>;
+  readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_fragment">;
 };
 export type TasksPageQuery = {
   response: TasksPageQuery$data;
   variables: TasksPageQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -29,7 +40,23 @@ const node: ConcreteRequest = {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "SideNav_viewer"
+        "name": "SideNavFooter_fragment"
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "EntTask",
+        "kind": "LinkedField",
+        "name": "tasks",
+        "plural": true,
+        "selections": [
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "TaskEditor_fragment"
+          }
+        ],
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -49,35 +76,56 @@ const node: ConcreteRequest = {
         "name": "viewer",
         "plural": false,
         "selections": [
+          (v0/*: any*/),
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
             "name": "userName",
             "storageKey": null
+          }
+        ],
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "EntTask",
+        "kind": "LinkedField",
+        "name": "tasks",
+        "plural": true,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "title",
+            "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "id",
+            "name": "status",
             "storageKey": null
-          }
+          },
+          (v0/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "c21fe22fce136a844848bf568046016e",
+    "cacheID": "fdf4bfd5a3417f3d57818073a0096096",
     "id": null,
     "metadata": {},
     "name": "TasksPageQuery",
     "operationKind": "query",
-    "text": "query TasksPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
+    "text": "query TasksPageQuery {\n  ...SideNavFooter_fragment\n  tasks {\n    ...TaskEditor_fragment\n    id\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment TaskEditor_fragment on EntTask {\n  title\n  ...TaskStatusSelect_fragment\n}\n\nfragment TaskStatusSelect_fragment on EntTask {\n  status\n}\n"
   }
 };
+})();
 
-(node as any).hash = "29d97010e27069271e8aea569ac95504";
+(node as any).hash = "5498d2a02d7296887cde98f5848bf93b";
 
 export default node;

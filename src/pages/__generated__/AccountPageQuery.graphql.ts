@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3dab174efa9baa83a3da389c90fe6de8>>
+ * @generated SignedSource<<9adb182e18943fb3fdbbb3ecd5d9932b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,29 +9,45 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-import { FragmentRefs } from "relay-runtime";
 export type AccountPageQuery$variables = Record<PropertyKey, never>;
 export type AccountPageQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
+  readonly viewer: {
+    readonly id: string;
+  } | null | undefined;
 };
 export type AccountPageQuery = {
   response: AccountPageQuery$data;
   variables: AccountPageQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = [
+  {
+    "alias": null,
+    "args": null,
+    "concreteType": "EntUser",
+    "kind": "LinkedField",
+    "name": "viewer",
+    "plural": false,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "id",
+        "storageKey": null
+      }
+    ],
+    "storageKey": null
+  }
+];
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "AccountPageQuery",
-    "selections": [
-      {
-        "args": null,
-        "kind": "FragmentSpread",
-        "name": "SideNav_viewer"
-      }
-    ],
+    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -40,44 +56,19 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "AccountPageQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "EntUser",
-        "kind": "LinkedField",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "userName",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "3379db4fc1dcad5feece4c4156af949c",
+    "cacheID": "f00886af543b31d3b5891e4d19b3ad3c",
     "id": null,
     "metadata": {},
     "name": "AccountPageQuery",
     "operationKind": "query",
-    "text": "query AccountPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
+    "text": "query AccountPageQuery {\n  viewer {\n    id\n  }\n}\n"
   }
 };
+})();
 
-(node as any).hash = "32a79717c741f1710493173a9e780b30";
+(node as any).hash = "2d2a1d0f4f8f92cc7a9efab28bccd782";
 
 export default node;

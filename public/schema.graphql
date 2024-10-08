@@ -1,4 +1,19 @@
 """
+The `@defer` directive may be provided for fragment spreads and inline fragments to inform the executor to delay the execution of the current fragment to indicate deprioritization of the current fragment. A query with `@defer` directive will cause the request to potentially return multiple responses, where non-deferred data is delivered in the initial response and data deferred is delivered in a subsequent response. `@include` and `@skip` take precedence over `@defer`.
+"""
+directive @defer(
+  """
+  If this argument label has a value other than null, it will be passed on to the result of this defer directive. This label is intended to give client applications a way to identify to which fragment a deferred result belongs to.
+  """
+  label: String
+
+  """
+  Deferred when true.
+  """
+  if: Boolean
+) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""
 The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response.
 """
 directive @cost(
@@ -67,14 +82,29 @@ type Query {
   tasks: [EntTask!]!
 
   """
+  Lookup a task by its unique identifier.
+  """
+  task(id: ID!): EntTask
+
+  """
   List all users.
   """
   users: [EntUser!]!
 
   """
+  Lookup a user by their unique identifier.
+  """
+  user(id: ID!): EntUser
+
+  """
   List all comments.
   """
   comments: [EntComment!]!
+
+  """
+  Lookup a comment by its unique identifier.
+  """
+  comment(id: ID!): EntComment
 }
 
 type Mutation {

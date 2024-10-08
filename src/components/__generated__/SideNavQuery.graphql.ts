@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3f239a5a25d6adbf3a474a04121181aa>>
+ * @generated SignedSource<<f83e2afc8198960da68ba18b49bc986e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,13 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TestsPageQuery$variables = Record<PropertyKey, never>;
-export type TestsPageQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"SideNav_viewer">;
+export type SideNavQuery$variables = Record<PropertyKey, never>;
+export type SideNavQuery$data = {
+  readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_fragment" | "SignInModal_fragment">;
 };
-export type TestsPageQuery = {
-  response: TestsPageQuery$data;
-  variables: TestsPageQuery$variables;
+export type SideNavQuery = {
+  response: SideNavQuery$data;
+  variables: SideNavQuery$variables;
 };
 
 const node: ConcreteRequest = {
@@ -24,12 +24,17 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "TestsPageQuery",
+    "name": "SideNavQuery",
     "selections": [
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "SideNav_viewer"
+        "name": "SignInModal_fragment"
+      },
+      {
+        "args": null,
+        "kind": "FragmentSpread",
+        "name": "SideNavFooter_fragment"
       }
     ],
     "type": "Query",
@@ -39,7 +44,7 @@ const node: ConcreteRequest = {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "TestsPageQuery",
+    "name": "SideNavQuery",
     "selections": [
       {
         "alias": null,
@@ -53,14 +58,14 @@ const node: ConcreteRequest = {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "userName",
+            "name": "id",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "id",
+            "name": "userName",
             "storageKey": null
           }
         ],
@@ -69,15 +74,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "6fba2d704af74ef1a5480551fe358098",
+    "cacheID": "1924fda98796a868299bb71af7c4634e",
     "id": null,
     "metadata": {},
-    "name": "TestsPageQuery",
+    "name": "SideNavQuery",
     "operationKind": "query",
-    "text": "query TestsPageQuery {\n  ...SideNav_viewer\n}\n\nfragment SideNavFooter_userName on EntUser {\n  userName\n}\n\nfragment SideNav_viewer on Query {\n  viewer {\n    ...SideNavFooter_userName\n    id\n  }\n}\n"
+    "text": "query SideNavQuery {\n  ...SignInModal_fragment\n  ...SideNavFooter_fragment\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment SignInModal_fragment on Query {\n  viewer {\n    id\n  }\n}\n"
   }
 };
 
-(node as any).hash = "8aed3548a6f828bb01a45b466fee8de9";
+(node as any).hash = "748e487e6a68dcfede2ed10dfc7ddaed";
 
 export default node;

@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 function App() {
   return (
     <RelayEnvironmentProvider environment={RelayEnvironment}>
-      <Suspense>
+      <Suspense fallback={<div>Top level loading...</div>}>
         <Router />
       </Suspense>
     </RelayEnvironmentProvider>

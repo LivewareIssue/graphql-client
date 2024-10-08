@@ -18,6 +18,9 @@ const nodePageEntryPoint: SimpleEntryPoint<typeof NodePage, Params> = {
             id: params.params['id']!
           },
         }
+      },
+      options: {
+          fetchPolicy: 'store-or-network'
       }
     };
   }
