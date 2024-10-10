@@ -7,6 +7,7 @@ import Flexbox from '../components/layout/Flexbox';
 import { layout } from '../layout.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { SideNavQuery } from '../components/__generated__/SideNavQuery.graphql';
+import { colors } from '../colors.stylex';
 
 type Props = SimpleEntryPointProps<{
   componentsPageQuery: ComponentsPageQuery,
@@ -22,11 +23,11 @@ const ComponentsPageContent = ({ query }: {query: PreloadedQuery<ComponentsPageQ
     }
   `, query);
   
-  return <div>ComponentsPage</div>
+  return <></>;
 }
 
 export const ComponentsPage = ({ queries: {componentsPageQuery, sideNavQuery} }: Props) => {
-  return <Flexbox style={[layout.fullHeight, layout.row]}>
+  return <Flexbox style={[styles.base, layout.fullHeight, layout.row]}>
     <SideNav query={sideNavQuery} style={layout.sideNav} />
     <Flexbox style={[layout.column, layout.content]}>
       <Suspense>
@@ -37,7 +38,9 @@ export const ComponentsPage = ({ queries: {componentsPageQuery, sideNavQuery} }:
 }
 
 const styles = stylex.create({
-
+  base: {
+    backgroundColor: colors.background
+  }
 });
 
 export default ComponentsPage;

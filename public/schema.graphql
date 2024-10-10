@@ -222,10 +222,10 @@ enum TaskPriority {
   LOW
   MEDIUM
   HIGH
+  CRITICAL
 }
 
 enum TaskSize {
-  XS
   S
   M
   L

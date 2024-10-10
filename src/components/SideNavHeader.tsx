@@ -18,7 +18,7 @@ const styles = stylex.create({
     padding: 10,
     display: {
       default: 'none',
-      '@media (min-aspect-ratio: 4/3)': 'block'
+      '@media (min-aspect-ratio: 5/3)': 'block'
     },
   },
 });

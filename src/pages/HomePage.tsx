@@ -7,6 +7,7 @@ import Flexbox from '../components/layout/Flexbox';
 import { layout } from '../layout.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { SideNavQuery } from '../components/__generated__/SideNavQuery.graphql';
+import { colors } from '../colors.stylex';
 
 type Props = SimpleEntryPointProps<{
   homePageQuery: HomePageQuery,
@@ -22,11 +23,11 @@ const HomePageContent = ({ query }: {query: PreloadedQuery<HomePageQuery>}) => {
     }
     `, query);
   
-  return <div>Home</div>
+  return <></>;
 }
 
 export const HomePage = ({ queries: {homePageQuery, sideNavQuery} }: Props) => {
-  return <Flexbox style={[layout.fullHeight, layout.row]}>
+  return <Flexbox style={[styles.base, layout.fullHeight, layout.row]}>
     <SideNav query={sideNavQuery} style={layout.sideNav} />
     <Flexbox style={[layout.column, layout.content]}>
       <Suspense>
@@ -37,7 +38,9 @@ export const HomePage = ({ queries: {homePageQuery, sideNavQuery} }: Props) => {
 }
 
 const styles = stylex.create({
-
+  base: {
+    backgroundColor: colors.background
+  }
 });
 
 export default HomePage;

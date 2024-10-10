@@ -119,7 +119,7 @@
 			"",
 			"type Props = {};",
 			"",
-			"const SideNavHeader = (props: Props) => {",
+			"const ${TM_FILENAME_BASE} = (props: Props) => {",
 			"  return <div {...stylex.props(styles.base)} />;",
 			"}",
 			"",
@@ -127,7 +127,7 @@
 			"  base: {}",
 			"});",
 			"",
-			"export default SideNavHeader;",
+			"export default ${TM_FILENAME_BASE};",
 		],
 		"description": "A styled component."
 	},

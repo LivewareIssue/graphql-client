@@ -8,6 +8,8 @@ import Flexbox from '../components/layout/Flexbox';
 import { layout } from '../layout.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { SideNavQuery } from '../components/__generated__/SideNavQuery.graphql';
+import { SpinnerIcon } from '../components/Icon';
+import { colors } from '../colors.stylex';
 
 type Props = SimpleEntryPointProps<{
   tasksPageQuery: TasksPageQuery,
@@ -23,17 +25,15 @@ const TasksPageContent = ({ query }: {query: PreloadedQuery<TasksPageQuery>}) =>
       }
     }
     `, query);
-  
-  const task = data.tasks?.find(Boolean);
 
-  return task && <TaskEditor fragmentKey={task} />
+  return <TaskEditor fragmentKey={data.tasks} />
 }
 
 export const TasksPage = ({ queries: {tasksPageQuery, sideNavQuery} }: Props) => {
-  return <Flexbox style={[layout.fullHeight, layout.row]}>
+  return <Flexbox style={[styles.base, layout.fullHeight, layout.row]}>
     <SideNav query={sideNavQuery} style={layout.sideNav} />
-    <Flexbox style={[layout.column, layout.content]}>
-      <Suspense>
+    <Flexbox style={[layout.column, layout.fullWidth, layout.content]}>
+      <Suspense fallback={<Flexbox style={layout.content}><SpinnerIcon size='medium'/>Loading TasksPageContent...</Flexbox>}>
         <TasksPageContent query={tasksPageQuery} />
       </Suspense>
     </Flexbox>
@@ -41,7 +41,10 @@ export const TasksPage = ({ queries: {tasksPageQuery, sideNavQuery} }: Props) =>
 }
 
 const styles = stylex.create({
-
+  base: {
+    backgroundColor: colors.background,
+    overflow: 'hidden',
+  }
 });
 
 export default TasksPage;

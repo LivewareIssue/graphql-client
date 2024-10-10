@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2a19ef02a0677ea3fa94187e2800e780>>
+ * @generated SignedSource<<4ca4c55d515bbec46c4522b1d0ea1ba4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -29,7 +29,17 @@ var v0 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-};
+},
+v1 = [
+  (v0/*: any*/),
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "userName",
+    "storageKey": null
+  }
+];
 return {
   "fragment": {
     "argumentDefinitions": [],
@@ -75,16 +85,7 @@ return {
         "kind": "LinkedField",
         "name": "viewer",
         "plural": false,
-        "selections": [
-          (v0/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "userName",
-            "storageKey": null
-          }
-        ],
+        "selections": (v1/*: any*/),
         "storageKey": null
       },
       {
@@ -95,6 +96,7 @@ return {
         "name": "tasks",
         "plural": true,
         "selections": [
+          (v0/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -109,19 +111,42 @@ return {
             "name": "status",
             "storageKey": null
           },
-          (v0/*: any*/)
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "size",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "priority",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "EntUser",
+            "kind": "LinkedField",
+            "name": "owner",
+            "plural": false,
+            "selections": (v1/*: any*/),
+            "storageKey": null
+          }
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "fdf4bfd5a3417f3d57818073a0096096",
+    "cacheID": "1e8496f264dc2212b5a7dd5f081b1d6b",
     "id": null,
     "metadata": {},
     "name": "TasksPageQuery",
     "operationKind": "query",
-    "text": "query TasksPageQuery {\n  ...SideNavFooter_fragment\n  tasks {\n    ...TaskEditor_fragment\n    id\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment TaskEditor_fragment on EntTask {\n  title\n  ...TaskStatusSelect_fragment\n}\n\nfragment TaskStatusSelect_fragment on EntTask {\n  status\n}\n"
+    "text": "query TasksPageQuery {\n  ...SideNavFooter_fragment\n  tasks {\n    ...TaskEditor_fragment\n    id\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment TaskEditor_fragment on EntTask {\n  id\n  title\n  status\n  size\n  priority\n  owner {\n    id\n    userName\n  }\n}\n"
   }
 };
 })();

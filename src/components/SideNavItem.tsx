@@ -45,7 +45,7 @@ export const styles = stylex.create({
     fontSize: 14,
     display: {
       default: null,
-      '@media (max-aspect-ratio: 4/3)': 'none'
+      '@media (max-aspect-ratio: 5/3)': 'none'
     },
   }
 });

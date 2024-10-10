@@ -2,10 +2,10 @@ import * as stylex from '@stylexjs/stylex';
 
 export const layout = stylex.create({
   fullHeight: {
-    height: '100vh'
+    height: '100%'
   },
   fullWidth: {
-    width: '100vw'
+    width: '100%'
   },
   column: {
     flexDirection: 'column'
@@ -23,12 +23,13 @@ export const layout = stylex.create({
     userSelect: 'none'
   },
   sideNav: {
-    width: {
+    minWidth: {
       default: null,
-      '@media (min-aspect-ratio: 4/3)': '200px'
+      '@media (min-aspect-ratio: 5/3)': '200px'
     },
   },
   content: {
     padding: 20,
-  }
+    gap: 20
+  },
 });

@@ -11,6 +11,12 @@ export const colors = stylex.defineVars({
   onAccent: {default: '#FFFFFF'},
   primaryText: {default: '#212121'},
   secondaryText: {default: '#757575'},
-  background: {default: 'white'},
-  lineColor: {default: '#BDBDBD'}
+  tertiaryText: {default: '#9E9E9E'},
+  background: {default: '#FAF9F6'},
+  lineColor: {default: '#BDBDBD'},
+  grey: {default: '#9E9E9E'},
+  blue: {default: '#16ACE3'},
+  green: {default: '#8DC63F'},
+  orange: {default: '#FF9800'},
+  red: {default: '#EF4136'},
 });

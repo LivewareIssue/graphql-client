@@ -9,6 +9,7 @@ import * as stylex from '@stylexjs/stylex';
 import { SideNavQuery } from '../components/__generated__/SideNavQuery.graphql';
 import Button from '../components/Button';
 import signOut from '../authentication/signOut';
+import { colors } from '../colors.stylex';
 
 type Props = SimpleEntryPointProps<{
   accountPageQuery: AccountPageQuery,
@@ -30,7 +31,7 @@ const AccountPageContent = ({ query }: {query: PreloadedQuery<AccountPageQuery>}
 }
 
 export const AccountPage = ({ queries: {accountPageQuery, sideNavQuery} }: Props) => {
-  return <Flexbox style={[layout.fullHeight, layout.row]}>
+  return <Flexbox style={[styles.base, layout.fullHeight, layout.row]}>
     <SideNav query={sideNavQuery} style={layout.sideNav} />
     <Flexbox style={[layout.column, layout.content]}>
       <Suspense>
@@ -41,7 +42,9 @@ export const AccountPage = ({ queries: {accountPageQuery, sideNavQuery} }: Props
 }
 
 const styles = stylex.create({
-
+  base: {
+    backgroundColor: colors.background
+  }
 });
 
 export default AccountPage;
