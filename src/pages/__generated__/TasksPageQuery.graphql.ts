@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4ca4c55d515bbec46c4522b1d0ea1ba4>>
+ * @generated SignedSource<<363e6db6a851e43c40a0fe7521a7182d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type TasksPageQuery$variables = Record<PropertyKey, never>;
 export type TasksPageQuery$data = {
   readonly tasks: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"TaskEditor_fragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"TaskList_fragment">;
   }>;
   readonly " $fragmentSpreads": FragmentRefs<"SideNavFooter_fragment">;
 };
@@ -63,7 +63,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "TaskEditor_fragment"
+            "name": "TaskList_fragment"
           }
         ],
         "storageKey": null
@@ -141,16 +141,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1e8496f264dc2212b5a7dd5f081b1d6b",
+    "cacheID": "fdb2b79a4d3dc73204921f58c2bcb1a7",
     "id": null,
     "metadata": {},
     "name": "TasksPageQuery",
     "operationKind": "query",
-    "text": "query TasksPageQuery {\n  ...SideNavFooter_fragment\n  tasks {\n    ...TaskEditor_fragment\n    id\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment TaskEditor_fragment on EntTask {\n  id\n  title\n  status\n  size\n  priority\n  owner {\n    id\n    userName\n  }\n}\n"
+    "text": "query TasksPageQuery {\n  ...SideNavFooter_fragment\n  tasks {\n    ...TaskList_fragment\n    id\n  }\n}\n\nfragment SideNavFooter_fragment on Query {\n  viewer {\n    id\n    userName\n  }\n}\n\nfragment TaskList_fragment on EntTask {\n  id\n  title\n  status\n  size\n  priority\n  owner {\n    id\n    userName\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "5498d2a02d7296887cde98f5848bf93b";
+(node as any).hash = "14f95b44b7361153472f2f10446984de";
 
 export default node;

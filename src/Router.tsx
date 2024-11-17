@@ -8,10 +8,9 @@ import { createBrowserRouter, RouterProvider, UNSAFE_DataRouterContext } from "r
 import homePageEntryPoint from "./pages/HomePage.entrypoint";
 import { useRelayEnvironment } from "react-relay";
 import tasksPageEntryPoint from "./pages/TasksPage.entrypoint";
-import { ClipboardIcon, GraphIcon, HomeIcon, Icon, PuzzlePieceIcon, UserCircleIcon } from "./components/Icon";
+import { ClipboardIcon, HomeIcon, Icon, PuzzlePieceIcon, UserCircleIcon } from "./components/Icon";
 import componentsPageEntryPoint from "./pages/ComponentsPage.entrypoint";
 import accountPageEntryPoint from "./pages/AccountPage.entrypoint";
-import nodePageEntryPoint from "./pages/NodePage.entrypoint";
 
 type MyAppEntryPoint = EntryPointRouteObject & {
   icon: Icon,
@@ -47,13 +46,6 @@ const ROUTES: MyAppEntryPoint[] = [
     title: "Account",
     exclude: true
   },
-  // {
-  //   path: "/node/:id",
-  //   entryPoint: nodePageEntryPoint,
-  //   icon: GraphIcon,
-  //   title: "Node",
-  //   exclude: true,
-  // }
 ];
 
 export const useRoutes = () => {

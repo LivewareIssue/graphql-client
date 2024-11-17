@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f408aa7bb38e84fad1c036e785ff5460>>
+ * @generated SignedSource<<3e025302e8c113012151d4baf14f4489>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,7 @@ export type TaskPriority = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM" | "%future add
 export type TaskSize = "L" | "M" | "S" | "XL" | "%future added value";
 export type TaskStatus = "BLOCKED" | "CLOSED" | "IN_PROGRESS" | "OPEN" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
-export type TaskEditor_fragment$data = ReadonlyArray<{
+export type TaskList_fragment$data = ReadonlyArray<{
   readonly id: string;
   readonly owner: {
     readonly id: string;
@@ -23,11 +23,11 @@ export type TaskEditor_fragment$data = ReadonlyArray<{
   readonly size: TaskSize;
   readonly status: TaskStatus;
   readonly title: string;
-  readonly " $fragmentType": "TaskEditor_fragment";
+  readonly " $fragmentType": "TaskList_fragment";
 }>;
-export type TaskEditor_fragment$key = ReadonlyArray<{
-  readonly " $data"?: TaskEditor_fragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"TaskEditor_fragment">;
+export type TaskList_fragment$key = ReadonlyArray<{
+  readonly " $data"?: TaskList_fragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"TaskList_fragment">;
 }>;
 
 const node: ReaderFragment = (function(){
@@ -44,7 +44,7 @@ return {
   "metadata": {
     "plural": true
   },
-  "name": "TaskEditor_fragment",
+  "name": "TaskList_fragment",
   "selections": [
     (v0/*: any*/),
     {
@@ -100,6 +100,6 @@ return {
 };
 })();
 
-(node as any).hash = "9c4ee9fc2e7d14ec59b0826e592acf16";
+(node as any).hash = "5bf2e280ecf2b785d221b239d170ec66";
 
 export default node;

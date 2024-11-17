@@ -44,7 +44,7 @@ export const styles = stylex.create({
   label: {
     fontSize: 14,
     display: {
-      default: null,
+      default: 'block',
       '@media (max-aspect-ratio: 5/3)': 'none'
     },
   }

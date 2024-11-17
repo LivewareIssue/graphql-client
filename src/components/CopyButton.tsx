@@ -17,7 +17,7 @@ const CopyButton = ({clipboardValue, ...props}: Props) => {
 
   const ref = useRef<HTMLButtonElement>(null);
 
-  return <Tooltip.Provider delayDuration={0}>
+  return <Tooltip.Provider>
     <Tooltip.Root >
       <Tooltip.Trigger ref={ref} onClick={e => e.preventDefault()}>
         <IconButton onClick={copyToClipboard} style={styles.base} icon={<CopyIcon size='small'/>} />
